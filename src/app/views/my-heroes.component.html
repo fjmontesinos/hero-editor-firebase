@@ -1,0 +1,44 @@
+<h2>Mis Héroes</h2>
+    
+<div *ngIf="!this.heroesGet">
+    Obteniendo listado de héroes favoritos...
+</div>
+
+<div *ngIf="( (this.heroesGet) && (heroes.length == 0) )">
+    UPS !!! No hay heroes en tu carpeta de favoritos.
+</div>
+
+<div *ngIf="this.heroesGet">
+  <label>Hero Nombre:</label> <input #heroName />
+  <button (click)="addHero(heroName.value); heroName.value=''">
+    Añadir
+  </button>
+</div>
+
+<ul class="heroes">
+    <li *ngFor="let hero of heroes" 
+    [class.selected]="hero === selectedHero"
+    (click)="onSelect(hero)">
+        <!-- cada heroe irá aquí -->
+        <span class="badge">{{hero.id}}</span> 
+        <span>{{hero.name}}</span>
+
+        <!-- botón para eliminar un heroe -->    
+        <button class="delete"
+            (click)="deleteHero(hero); $event.stopPropagation()">x</button>
+        <!--
+        Explicación de por que usar $event.stopPropagation()
+        ..............................................................................................
+        In addition to calling the component's delete() method, the delete button's click handler code 
+        stops the propagation of the click event—you don't want the <li> click handler to be triggered 
+        because doing so would select the hero that the user will delete.
+        -->
+    </li>
+</ul>
+
+<div *ngIf="selectedHero">
+  <h2>
+    {{selectedHero.name | uppercase}} is my hero
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>

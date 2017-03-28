@@ -1,0 +1,24 @@
+<div *ngIf="!this.heroGet" class="msg">
+    Obteniendo datos del héroe que deseas consultar
+</div>
+
+<div *ngIf="( (this.heroGet) && (!hero) )" class="msg">
+    UPS !!! No se encuentra el héroe que buscas.
+</div>
+
+<div *ngIf="hero" style="float:left;margin-left:20px">
+    <h2>{{hero.name}} detalles!</h2>
+    <div>
+        <label>Id : </label> {{hero.id}}
+    </div>
+    
+    <div>
+        <label>Nombre : </label> 
+        <input [(ngModel)]="hero.name" placeholder="name" />
+    </div>
+    
+    <div style="margin-top:20px">
+        <button (click)="goBack()">Volver</button>
+        <button (click)="save()">Guardar</button>
+    </div>
+</div>

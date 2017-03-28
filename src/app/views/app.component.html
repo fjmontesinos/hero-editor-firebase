@@ -1,0 +1,13 @@
+<h1>{{title}}</h1>   
+<nav>
+    <a routerLink="/my-dashboard" routerLinkActive="active">Mi Dashboard</a>
+    <a routerLink="/my-heroes" routerLinkActive="active">Mis Héroes</a>        
+</nav>
+<router-outlet></router-outlet>
+
+<!--
+    The Angular Router provides a routerLinkActive directive we can use to add a class 
+    to the HTML navigation element whose route matches the active route. 
+    
+    All we have to do is define the style for it. Sweet!
+    -->

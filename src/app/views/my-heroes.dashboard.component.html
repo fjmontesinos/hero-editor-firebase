@@ -1,0 +1,19 @@
+<h3>Top 5 Héroes</h3>
+
+<div *ngIf="!this.heroesGet">
+    Obteniendo listado de héroes en top 5...
+</div>
+
+<div *ngIf="( (this.heroesGet) && (heroes.length == 0) )">
+    UPS !!! No hay heroes en el top 5. Qué raro!!!
+</div>
+
+<div class="grid grid-pad">
+    <a *ngFor="let hero of heroes" [routerLink]="['/hero', hero.id]" class="col-1-5">
+        <div class="module hero">
+            <h4>{{hero.name}}</h4>
+        </div>
+    </a>
+</div>
+
+<hero-search *ngIf="this.heroesGet"></hero-search>
